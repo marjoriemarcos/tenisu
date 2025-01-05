@@ -1,0 +1,117 @@
+:root {
+    --primary-color: #F3753A;
+    --secondary-color: #abaaaa;
+  }
+
+* {
+    box-sizing: border-box;
+    font-family: "Montserrat", serif;
+  }
+
+body {
+    background-image: url("../assets/pictureFinal.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    }
+
+.home_page {
+    border: 1px solid red;
+    height: 100vh;
+}
+
+.home_page-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    border: 3px solid black;
+    width: 50%;
+}
+
+.search_container {
+    border: 1px solid rgb(0, 255, 140);
+    width: 50vw;
+    top: 25%;
+    left: 15%;
+}
+.search_container_input {
+    background: rgba(0, 0, 0, 0.5);
+    outline: none;
+    color: rgb(197, 135, 98);
+    font-size: 17px;
+    letter-spacing: 1,5px;
+    font-weight: 700;
+    border-radius: 10px;
+    height: 20%;
+    width: 50%;
+    padding: 1%;
+    border: none;
+}
+
+.playercarde_container {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid rgb(76, 0, 255);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: white;
+    width: 20vw;
+    height: 17vh;
+    overflow: hidden;
+}
+
+.playercarde_img{
+    flex: 2;
+}
+
+img {
+    border: 1px solid blue;
+    width: 100%;
+}
+
+.playercarde_details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgb(255, 0, 234);
+    flex: 3;
+    padding: 1.5em;
+}
+
+.playercarde_detail_title {
+    color: var(--primary-color);
+    font-size: 2rem;
+    border: 1px solid red;
+    margin: 0;
+}
+
+.playercard_detail_other {
+    display: flex;
+    justify-content: space-between;
+    align-content: end;
+    border: 1px solid rgb(60, 0, 255);
+    width: 100%;
+}
+
+.playercard_detail_other_rank :nth-child(2),
+.playercard_detail_other_points :nth-child(2),
+.playercard_detail_other_country :nth-child(2) {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.playercard_detail_other_rank :nth-child(1),
+.playercard_detail_other_points :nth-child(1),
+.playercard_detail_other_country :nth-child(1) {
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin: 0;
+}
