@@ -1,5 +1,6 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import "reflect-metadata";
+import { Country } from "./Country";
 
 
 @Entity()
@@ -20,10 +21,7 @@ export class Player extends BaseEntity {
     sex!: string
 
     @Column()
-    country_picture!: string
-
-    @Column({length: 3})
-    country_code!: string
+    picture!: string
 
     @Column()
     rank!: number
@@ -41,5 +39,8 @@ export class Player extends BaseEntity {
     age!: number
 
     @Column()
-    last_match_scores!: JSON
+    last_match_scores!: number
+
+    @ManyToOne(() => Country, (country) => country.players)
+    country!: Country
 }

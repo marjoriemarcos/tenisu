@@ -2,8 +2,9 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from './App';
-import HomePage from './pages/HomePages';
+import HomePage from './pages/HomePage';
 import "./assets/styles.css"
+import PlayerPage from './pages/PlayerPage';
 
 const router = createBrowserRouter ([
   {  
@@ -13,6 +14,10 @@ const router = createBrowserRouter ([
       {
         path: "/",
         element: <HomePage />
+      },
+      {
+        path: "/players/:playerId",
+        element: <PlayerPage />
       }
     ]
   }

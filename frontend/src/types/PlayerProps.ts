@@ -2,7 +2,7 @@ type PlayerProps = {
     id: number,
     firstname: string,
     lastname: string,
-    shotname: string,
+    shortname: string,
     sex: string,
     picture: string,
     rank: number,
@@ -11,6 +11,10 @@ type PlayerProps = {
     height: number,
     age: number,
     last_match_scores: number
+    country: {
+        code: string,
+        picture: string
+    }
 }
 
 export default PlayerProps;
