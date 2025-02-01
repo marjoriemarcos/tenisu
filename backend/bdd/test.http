@@ -3,3 +3,7 @@ GET http://localhost:5002/players
 ###
 
 GET http://localhost:5002/players/52
+
+###
+
+GET http://localhost:5002/search?searchText=rafael

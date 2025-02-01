@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, BeforeInsert, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import "reflect-metadata";
 import { Country } from "./Country";
 
@@ -13,6 +13,9 @@ export class Player extends BaseEntity {
 
     @Column()
     lastname!: string
+
+    @Column()
+    totalName!: string
 
     @Column()
     shortname!: string
@@ -43,4 +46,9 @@ export class Player extends BaseEntity {
 
     @ManyToOne(() => Country, (country) => country.players)
     country!: Country
+
+    @BeforeInsert()
+    updateTotalName() {
+        this.totalName = this.lastname + ' ' + this.firstname
+    }
 }
