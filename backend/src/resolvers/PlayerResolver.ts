@@ -1,4 +1,4 @@
-import { Arg, Field, ID, InputType, Query, Resolver } from "type-graphql";
+import { Arg, Field, ID, InputType, Mutation, Query, Resolver } from "type-graphql";
 import { Country } from "../entities/Country";
 import { Player } from "../entities/Player";
 import { Like } from "typeorm";
@@ -13,7 +13,7 @@ class PlayerInput {
     lastname!: string;
 
     @Field()
-    totalName!: string;
+    shortname!: string
 
     @Field()
     sex!: string;
@@ -60,7 +60,7 @@ class PlayerResolver {
         return player
     }
 
-    @Query(() => Player)
+    @Query(() => [Player])
     async getPlayerWithSearchBar(@Arg("needle", { nullable: true }) needle?: string) {
 
         let whereClause = {};
@@ -71,9 +71,20 @@ class PlayerResolver {
         }
 
         const player = await Player.find({
-            relations: { country: true},
-            where:  whereClause
+            where:  whereClause,
+            relations: { country: true}
         })
+        if (!player) {
+            throw new Error("Player not found"); 
+        }
+        return player
+    }
+
+    @Mutation(() => Player)
+    async createPlayer(@Arg("data") data?: PlayerInput) {
+        let player = new Player()
+        player = Object.assign(player, data)
+        player.save()
         return player
     }
 }

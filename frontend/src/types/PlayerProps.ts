@@ -1,5 +1,5 @@
 type PlayerProps = {
-    id: number,
+    id: string,
     firstname: string,
     lastname: string,
     shortname: string,

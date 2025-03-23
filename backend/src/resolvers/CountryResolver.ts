@@ -1,6 +1,5 @@
-import { Arg, Field, ID, InputType, Query, Resolver } from "type-graphql";
+import { Arg, Field, ID, InputType, Mutation, Query, Resolver } from "type-graphql";
 import { Country } from "../entities/Country";
-import { Player } from "../entities/Player";
 
 
 @InputType()
@@ -10,9 +9,6 @@ class CountryInput {
 
     @Field()
     code!: string;
-
-    @Field(() => [ID])
-    players!: Player;
 }
 
 @Resolver(Country)
@@ -33,6 +29,15 @@ class CountryResolver {
         })
         return country
     }
+
+    @Mutation(() => Country)
+    async createCountry(@Arg("data") data?: CountryInput) {
+        let country = new Country()
+        country = Object.assign(country, data)
+        await country.save()
+        return country
+    }
+
 }
 
 export default CountryResolver

@@ -5,6 +5,8 @@ import App from './App';
 import HomePage from './pages/HomePage';
 import "./assets/styles.css"
 import PlayerPage from './pages/PlayerPage';
+import { client } from './libs/api.ts';
+import { ApolloProvider } from '@apollo/client';
 
 const router = createBrowserRouter ([
   {  
@@ -28,6 +30,8 @@ const router = createBrowserRouter ([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-     <RouterProvider router={router} />  
+    <ApolloProvider client={client}>
+      <RouterProvider router={router} />  
+    </ApolloProvider>
   </StrictMode>,
 )
